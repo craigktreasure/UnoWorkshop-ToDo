@@ -1,13 +1,12 @@
-﻿using System;
-using Windows.UI.Xaml;
-
 namespace ToDo.Wasm
 {
-    public class Program
+    using Uno.UI;
+
+    public static class Program
     {
         private static App _app;
 
-        static int Main(string[] args)
+        private static int Main(string[] args)
         {
             Windows.UI.Xaml.Application.Start(_ => _app = new App());
 
