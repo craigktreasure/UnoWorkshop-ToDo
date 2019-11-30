@@ -31,6 +31,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\ToDo.Models\State.cs" Link="Models\State.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\ToDo.Models\Todo.cs" Link="Models\Todo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\ToDo.ViewModels\MainPageVM.cs" Link="ViewModels\MainPageVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\ToDo.ViewModels\SimpleCommand.cs" Link="ViewModels\SimpleCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)MainPage.xaml">
