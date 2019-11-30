@@ -1,23 +1,14 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.ApplicationModel;
-using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-namespace ToDo
+﻿namespace ToDo
 {
+    using System;
+    using Windows.ApplicationModel;
+    using Windows.ApplicationModel.Activation;
+    using Windows.UI.Xaml;
+    using Windows.UI.Xaml.Controls;
+    using Windows.UI.Xaml.Navigation;
+    using Microsoft.Extensions.Logging;
+    using Uno.Extensions;
+
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
@@ -29,10 +20,10 @@ namespace ToDo
         /// </summary>
         public App()
         {
-            ConfigureFilters(Uno.Extensions.LogExtensionPoint.AmbientLoggerFactory);
+            ConfigureFilters(LogExtensionPoint.AmbientLoggerFactory);
 
             this.InitializeComponent();
-            this.Suspending += OnSuspending;
+            this.Suspending += this.OnSuspending;
         }
 
         /// <summary>
@@ -43,10 +34,10 @@ namespace ToDo
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
 #if DEBUG
-			if (System.Diagnostics.Debugger.IsAttached)
-			{
-				// this.DebugSettings.EnableFrameRateCounter = true;
-			}
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                // this.DebugSettings.EnableFrameRateCounter = true;
+            }
 #endif
             Frame rootFrame = Windows.UI.Xaml.Window.Current.Content as Frame;
 
@@ -57,7 +48,7 @@ namespace ToDo
                 // Create a Frame to act as the navigation context and navigate to the first page
                 rootFrame = new Frame();
 
-                rootFrame.NavigationFailed += OnNavigationFailed;
+                rootFrame.NavigationFailed += this.OnNavigationFailed;
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
@@ -77,6 +68,7 @@ namespace ToDo
                     // parameter
                     rootFrame.Navigate(typeof(MainPage), e.Arguments);
                 }
+
                 // Ensure the current window is active
                 Windows.UI.Xaml.Window.Current.Activate();
             }
@@ -101,7 +93,7 @@ namespace ToDo
         /// <param name="e">Details about the suspend request.</param>
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
-            var deferral = e.SuspendingOperation.GetDeferral();
+            SuspendingDeferral deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
@@ -116,35 +108,35 @@ namespace ToDo
             factory
                 .WithFilter(new FilterLoggerSettings
                     {
-                        { "Uno", LogLevel.Warning },
-                        { "Windows", LogLevel.Warning },
+                        {"Uno", LogLevel.Warning},
+                        {"Windows", LogLevel.Warning}
 
-						// Debug JS interop
-						// { "Uno.Foundation.WebAssemblyRuntime", LogLevel.Debug },
+                        // Debug JS interop
+                        // { "Uno.Foundation.WebAssemblyRuntime", LogLevel.Debug },
 
-						// Generic Xaml events
-						// { "Windows.UI.Xaml", LogLevel.Debug },
-						// { "Windows.UI.Xaml.VisualStateGroup", LogLevel.Debug },
-						// { "Windows.UI.Xaml.StateTriggerBase", LogLevel.Debug },
-						// { "Windows.UI.Xaml.UIElement", LogLevel.Debug },
+                        // Generic Xaml events
+                        // { "Windows.UI.Xaml", LogLevel.Debug },
+                        // { "Windows.UI.Xaml.VisualStateGroup", LogLevel.Debug },
+                        // { "Windows.UI.Xaml.StateTriggerBase", LogLevel.Debug },
+                        // { "Windows.UI.Xaml.UIElement", LogLevel.Debug },
 
-						// Layouter specific messages
-						// { "Windows.UI.Xaml.Controls", LogLevel.Debug },
-						// { "Windows.UI.Xaml.Controls.Layouter", LogLevel.Debug },
-						// { "Windows.UI.Xaml.Controls.Panel", LogLevel.Debug },
-						// { "Windows.Storage", LogLevel.Debug },
+                        // Layouter specific messages
+                        // { "Windows.UI.Xaml.Controls", LogLevel.Debug },
+                        // { "Windows.UI.Xaml.Controls.Layouter", LogLevel.Debug },
+                        // { "Windows.UI.Xaml.Controls.Panel", LogLevel.Debug },
+                        // { "Windows.Storage", LogLevel.Debug },
 
-						// Binding related messages
-						// { "Windows.UI.Xaml.Data", LogLevel.Debug },
+                        // Binding related messages
+                        // { "Windows.UI.Xaml.Data", LogLevel.Debug },
 
-						// DependencyObject memory references tracking
-						// { "ReferenceHolder", LogLevel.Debug },
-					}
+                        // DependencyObject memory references tracking
+                        // { "ReferenceHolder", LogLevel.Debug },
+                    }
                 )
 #if DEBUG
-				.AddConsole(LogLevel.Debug);
+                .AddConsole(LogLevel.Debug);
 #else
-                .AddConsole(LogLevel.Information);
+				.AddConsole(LogLevel.Information);
 #endif
         }
     }

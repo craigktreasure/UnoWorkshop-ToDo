@@ -61,9 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>12.0.3</Version>
-    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Uno.UI" Version="1.45.0" />
     <PackageReference Include="Uno.UniversalImageLoader" Version="1.9.32" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
@@ -90,6 +88,16 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Styles.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ToDo.Models\ToDo.Models.csproj">
+      <Project>{54cc3dea-d0f4-47fb-8e73-d1ca4468a183}</Project>
+      <Name>ToDo.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ToDo.ViewModels\ToDo.ViewModels.csproj">
+      <Project>{ecb17859-8634-44a4-86e8-2541234a1d05}</Project>
+      <Name>ToDo.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\ToDo.Shared\ToDo.Shared.projitems" Label="Shared" Condition="Exists('..\ToDo.Shared\ToDo.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

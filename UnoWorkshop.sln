@@ -11,15 +11,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDo.iOS", "ToDo\ToDo.iOS\T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDo.UWP", "ToDo\ToDo.UWP\ToDo.UWP.csproj", "{320B8AE6-0249-48AC-A796-81D8642BAF8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDo.Wasm", "ToDo\ToDo.Wasm\ToDo.Wasm.csproj", "{804ECB3A-3ACC-40E4-B7B7-3D0E545808AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDo.Wasm", "ToDo\ToDo.Wasm\ToDo.Wasm.csproj", "{804ECB3A-3ACC-40E4-B7B7-3D0E545808AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDo.Models", "ToDo.Models\ToDo.Models.csproj", "{54CC3DEA-D0F4-47FB-8E73-D1CA4468A183}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDo.Models", "ToDo.Models\ToDo.Models.csproj", "{54CC3DEA-D0F4-47FB-8E73-D1CA4468A183}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDo.ViewModels", "ToDo.ViewModels\ToDo.ViewModels.csproj", "{ECB17859-8634-44A4-86E8-2541234A1D05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDo.ViewModels", "ToDo.ViewModels\ToDo.ViewModels.csproj", "{ECB17859-8634-44A4-86E8-2541234A1D05}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		ToDo\ToDo.Shared\ToDo.Shared.projitems*{2cb31828-2cd3-4cfc-88a9-57917477d85d}*SharedItemsImports = 4
 		ToDo\ToDo.Shared\ToDo.Shared.projitems*{320b8ae6-0249-48ac-a796-81d8642baf8f}*SharedItemsImports = 4
+		ToDo\ToDo.Shared\ToDo.Shared.projitems*{5a51a5fd-ec5b-4c71-b15c-b83f805987ca}*SharedItemsImports = 4
 		ToDo\ToDo.Shared\ToDo.Shared.projitems*{6279c845-92f8-4333-ab99-3d213163593c}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
