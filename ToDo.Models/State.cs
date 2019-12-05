@@ -1,43 +1,64 @@
-﻿/// 💡 <summary>
-///     `[GeneratedImmutable]`, `[EqualityKey]` and `[EqualityIgnore]` come from an optional but recommended dependency
-///     called `Uno.CodeGen` which is a set of tools to generate C# code in msbuild based projects.
-///
-///     Features:
-///     - Amazingly fast: absolutely zero reflection at runtime
-///     - Generates both.Equals() and.GetHashCode() overrrides
-///     - Generates equality(== and !=) operators
-///     - Implements IEquatable<T>
-///     - Works with derived classes
-///     - Custom comparers supported
-///     - Works with collection members(both same order and unsorted equality)
-///     - Works with dictionary members(both same order and unsorted equality)
-///     - Optional case insentive comparisons for strings
-///     - Optional support for KeyEquality(see doc for more details)
-///     - Debuggable: You can put a breakpoint directly in the generated code
-///     - Highly configureable: Generated code provides a lot of useful tips(stripped in previous snippet)
-///     - Documentation here for Equality Members Generator
-/// </summary>
-/// 📚 <seealso cref="https://github.com/nventive/Uno.CodeGen"/>
-namespace ToDo.Models
+﻿namespace ToDo.Models
 {
-    using System.Collections.Generic;
-    using System.Collections.Immutable;
+    using DynamicData;
+    using ReactiveUI;
+    using System;
+    using System.Collections.ObjectModel;
     using System.Linq;
-    using Uno;
+    using System.Reactive.Linq;
 
-    [GeneratedImmutable]
-    public partial class State
+    public class State : ReactiveObject
     {
-        [EqualityHash]
-        public ImmutableArray<Todo> Todos { get; } = ImmutableArray<Todo>.Empty;
+        private readonly SourceCache<Todo, Guid> todos = new SourceCache<Todo, Guid>(x => x.Id);
 
-        [EqualityIgnore]
+        public static State Default => new State();
+
+        public IObservable<IChangeSet<Todo, Guid>> Connect() => this.todos.Connect();
+
+        private readonly ReadOnlyObservableCollection<Todo> _todos;
+
+        public ReadOnlyObservableCollection<Todo> Todos => this._todos;
+
         public int RemainingTodos => this.ActiveTodos.Count();
 
-        [EqualityIgnore]
-        public IEnumerable<Todo> ActiveTodos => this.Todos.Where(t => !t.IsDone);
+        private readonly ReadOnlyObservableCollection<Todo> _activeTodos;
 
-        [EqualityIgnore]
-        public IEnumerable<Todo> InactiveTodos => this.Todos.Where(t => t.IsDone);
+        public ReadOnlyObservableCollection<Todo> ActiveTodos => this._activeTodos;
+
+        private readonly ReadOnlyObservableCollection<Todo> _inactiveTodos;
+
+        public ReadOnlyObservableCollection<Todo> InactiveTodos => this._inactiveTodos;
+
+        public State()
+        {
+            this.Connect()
+                .ObserveOn(Scheduling.MainThreadScheduler)
+                .Bind(out this._todos)
+                .Subscribe();
+
+            this.Connect()
+                .AutoRefresh(p => p.IsDone)
+                .Filter(x => !x.IsDone)
+                .ObserveOn(Scheduling.MainThreadScheduler)
+                .Bind(out this._activeTodos)
+                .Subscribe();
+
+            this.Connect()
+                .AutoRefresh(p => p.IsDone)
+                .Filter(x => x.IsDone)
+                .ObserveOn(Scheduling.MainThreadScheduler)
+                .Bind(out this._inactiveTodos)
+                .Subscribe();
+        }
+
+        public void Add(Todo todo)
+        {
+            this.todos.AddOrUpdate(todo);
+        }
+
+        public void Remove(Todo todo)
+        {
+            this.todos.Remove(todo);
+        }
     }
 }

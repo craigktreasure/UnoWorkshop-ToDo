@@ -26,15 +26,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\FromBooleanToDoubleConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\FromEnumerableAnyToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\FromEnumerableToCountConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\FromStateItemsRemainingToPluralConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\FromNumberToItemsLeftConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\FromStateItemsRemainingToProgressConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)..\..\ToDo.Models\State.cs" Link="Models\State.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)..\..\ToDo.Models\Todo.cs" Link="Models\Todo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\ToDo.Models\IdBasedObject.cs" Link="Models\IdBasedObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\ToDo.Models\Platform.cs" Link="Models\Platform.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\ToDo.Models\Scheduling.cs" Link="Models\Scheduling.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)..\..\ToDo.ViewModels\MainPageVM.cs" Link="ViewModels\MainPageVM.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)..\..\ToDo.ViewModels\SimpleCommand.cs" Link="ViewModels\SimpleCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)MainPage.xaml">

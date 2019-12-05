@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "path": "UnoWorkshop.sln",
+    "projects": [
+      "ToDo\\ToDo.Shared\\ToDo.Shared.shproj",
+      "ToDo\\ToDo.UWP\\ToDo.UWP.csproj",
+      "ToDo\\ToDo.Wasm\\ToDo.Wasm.csproj"
+    ]
+  }
+}

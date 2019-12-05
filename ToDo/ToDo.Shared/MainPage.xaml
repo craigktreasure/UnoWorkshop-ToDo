@@ -122,7 +122,7 @@
                 </Button>
             </Grid>
 
-            <TextBlock Text="{Binding State, Converter={StaticResource FromStateItemsRemainingToPluralConverter}}"
+            <TextBlock Text="{Binding State.ActiveTodos.Count, Converter={StaticResource FromNumberToItemsLeftConverter}, ConverterParameter='todo item', Mode=OneWay}"
                        Grid.Row="1"
                        Padding="0,5,0,0"
                        VerticalAlignment="Center" />

@@ -1,31 +1,28 @@
 ﻿namespace ToDo.ViewModels
 {
+    using ReactiveUI;
+    using ReactiveUI.Fody.Helpers;
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Linq;
-    using System.Runtime.CompilerServices;
     using System.Windows.Input;
     using ToDo.Models;
 
     /// <summary>
     /// ViewModel for main page (the only one yet) for the TodoApp
     /// </summary>
-    public class MainPageVM : INotifyPropertyChanged
+    public class MainPageVM : ReactiveObject
     {
         private int _filter;
-
-        private string _newTodoText;
 
         private State _state = State.Default;
 
         public MainPageVM()
         {
             // Create commands
-            this.CreateNew = new SimpleCommand(this.ExecuteCreateNew);
-            this.ViewAll = new SimpleCommand(() => this.Filter = 0);
-            this.ViewActive = new SimpleCommand(() => this.Filter = 1);
-            this.ViewInactive = new SimpleCommand(() => this.Filter = 2);
+            this.CreateNew = ReactiveCommand.Create(this.ExecuteCreateNew);
+            this.ViewAll = ReactiveCommand.Create(() => this.Filter = 0);
+            this.ViewActive = ReactiveCommand.Create(() => this.Filter = 1);
+            this.ViewInactive = ReactiveCommand.Create(() => this.Filter = 2);
         }
 
         public State State
@@ -35,8 +32,8 @@
             private set
             {
                 this._state = value;
-                this.OnPropertyChanged();
-                this.OnPropertyChanged(nameof(this.Todos));
+                this.RaisePropertyChanged();
+                this.RaisePropertyChanged(nameof(this.Todos));
             }
         }
 
@@ -46,9 +43,8 @@
 
             set
             {
-                this._filter = value;
-                this.OnPropertyChanged();
-                this.OnPropertyChanged(nameof(this.Todos));
+                this.RaiseAndSetIfChanged(ref this._filter, value);
+                this.RaisePropertyChanged(nameof(this.Todos));
             }
         } // 0-all, 1-active, 2-inactives
 
@@ -72,16 +68,8 @@
             }
         }
 
-        public string NewTodoText
-        {
-            get => this._newTodoText;
-
-            set
-            {
-                this._newTodoText = value;
-                this.OnPropertyChanged();
-            }
-        }
+        [Reactive]
+        public string NewTodoText { get; set; }
 
         public ICommand CreateNew { get; }
 
@@ -94,25 +82,13 @@
         private void ExecuteCreateNew()
         {
             Todo newTodo = new Todo(this.NewTodoText);
-            this.State = this.State.WithTodos(todos => todos.Add(newTodo));
+            this.State.Add(newTodo);
             this.NewTodoText = string.Empty;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public void ChangeState(Todo todo, bool isDone)
         {
-            this.State = this.State.WithTodos(todos =>
-            {
-                Todo existing = todos.FirstOrDefault(t => t.KeyEquals(todo));
-                Todo newTodo = existing.WithIsDone(isDone);
-                return newTodo != existing ? todos.Replace(existing, newTodo) : todos;
-            });
+            todo.IsDone = isDone;
         }
 
         public void ChangeText(Todo todo, string newText)
@@ -125,21 +101,12 @@
                 return;
             }
 
-            this.State = this.State.WithTodos(todos =>
-            {
-                Todo existing = todos.FirstOrDefault(t => t.KeyEquals(todo));
-                Todo newTodo = existing.WithText(newText);
-                return newTodo != existing ? todos.Replace(existing, newTodo) : todos;
-            });
+            todo.Text = newText;
         }
 
         public void RemoveTodo(Todo todo)
         {
-            this.State = this.State.WithTodos(todos =>
-            {
-                Todo existing = todos.FirstOrDefault(t => t.KeyEquals(todo));
-                return existing != null ? todos.Remove(existing) : todos;
-            });
+            this.State.Remove(todo);
         }
     }
 }

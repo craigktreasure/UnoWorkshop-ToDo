@@ -10,7 +10,7 @@
         {
             if (value is State state)
             {
-                int total = state.Todos.Length;
+                int total = state.Todos.Count;
 
                 if (total == 0)
                 {
