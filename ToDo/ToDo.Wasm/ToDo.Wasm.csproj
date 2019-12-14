@@ -37,15 +37,15 @@
   </ItemGroup>
   <ItemGroup>
     <!-- Note that for WebAssembly version 1.1.1 of the console logger required -->
-    <PackageReference Include="Humanizer.Core" Version="2.7.9" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="ReactiveUI.Fody" Version="11.0.1" />
-    <PackageReference Include="ReactiveUI.Uno" Version="11.0.1" />
-    <PackageReference Include="Uno.CodeGen" Version="1.32.0" />
-    <PackageReference Include="Uno.UI" Version="2.1.0-dev.272" />
-    <PackageReference Include="Uno.Wasm.Bootstrap" Version="1.0.10" />
+    <PackageReference Include="Humanizer.Core" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Filter" />
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="ReactiveUI.Fody" />
+    <PackageReference Include="ReactiveUI.Uno" />
+    <PackageReference Include="Uno.CodeGen" />
+    <PackageReference Include="Uno.UI" />
+    <PackageReference Include="Uno.Wasm.Bootstrap" />
     <DotNetCliToolReference Include="Uno.Wasm.Bootstrap.Cli" Version="1.0.0-dev.302" />
   </ItemGroup>
   <Import Project="..\ToDo.Shared\ToDo.Shared.projitems" Label="Shared" Condition="Exists('..\ToDo.Shared\ToDo.Shared.projitems')" />
