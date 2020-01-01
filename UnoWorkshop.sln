@@ -15,6 +15,25 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDo.Models", "ToDo.Models\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDo.ViewModels", "ToDo.ViewModels\ToDo.ViewModels.csproj", "{ECB17859-8634-44A4-86E8-2541234A1D05}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{53B2C3A3-793C-45EA-AC20-8C6804E38AFE}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		global.json = global.json
+		nuget.config = nuget.config
+		Packages.props = Packages.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSBuild", "MSBuild", "{D62411C3-03D8-4768-B8F4-0743DCAAAB10}"
+	ProjectSection(SolutionItems) = preProject
+		MSBuild\Defaults.props = MSBuild\Defaults.props
+		MSBuild\Defaults.targets = MSBuild\Defaults.targets
+		MSBuild\Paths.props = MSBuild\Paths.props
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		ToDo\ToDo.Shared\ToDo.Shared.projitems*{2cb31828-2cd3-4cfc-88a9-57917477d85d}*SharedItemsImports = 4
@@ -231,6 +250,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D62411C3-03D8-4768-B8F4-0743DCAAAB10} = {53B2C3A3-793C-45EA-AC20-8C6804E38AFE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7F327A80-2FA4-43DA-AFF7-CBE994376B7F}
