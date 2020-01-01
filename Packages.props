@@ -6,11 +6,11 @@
     <PackageReference Update="Microsoft.Extensions.Logging.Filter"        Version="1.1.2" />
     <PackageReference Update="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.9" />
     <PackageReference Update="Newtonsoft.Json"                            Version="12.0.3" />
-    <PackageReference Update="ReactiveUI.Fody"                            Version="11.0.1" />
-    <PackageReference Update="ReactiveUI.Uno"                             Version="11.0.1" />
+    <PackageReference Update="ReactiveUI.Fody"                            Version="11.1.1" />
+    <PackageReference Update="ReactiveUI.Uno"                             Version="11.1.1" />
     <PackageReference Update="Uno.CodeGen"                                Version="1.32.0" />
     <PackageReference Update="Uno.Core"                                   Version="1.29.0" />
-    <PackageReference Update="Uno.UI"                                     Version="2.1.0-dev.272" />
+    <PackageReference Update="Uno.UI"                                     Version="2.0.528" />
     <PackageReference Update="Uno.UniversalImageLoader"                   Version="1.9.32" />
     <PackageReference Update="Uno.Wasm.Bootstrap"                         Version="1.0.10" />
   </ItemGroup>

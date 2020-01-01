@@ -46,7 +46,7 @@
     <PackageReference Include="Uno.CodeGen" />
     <PackageReference Include="Uno.UI" />
     <PackageReference Include="Uno.Wasm.Bootstrap" />
-    <DotNetCliToolReference Include="Uno.Wasm.Bootstrap.Cli" Version="1.0.0-dev.302" />
+    <DotNetCliToolReference Include="Uno.Wasm.Bootstrap.Cli" Version="1.0.10" />
   </ItemGroup>
   <Import Project="..\ToDo.Shared\ToDo.Shared.projitems" Label="Shared" Condition="Exists('..\ToDo.Shared\ToDo.Shared.projitems')" />
 </Project>
