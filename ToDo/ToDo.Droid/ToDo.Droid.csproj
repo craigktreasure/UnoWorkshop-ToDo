@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -92,6 +92,16 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Styles.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ToDo.Models\ToDo.Models.csproj">
+      <Project>{54cc3dea-d0f4-47fb-8e73-d1ca4468a183}</Project>
+      <Name>ToDo.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ToDo.ViewModels\ToDo.ViewModels.csproj">
+      <Project>{ecb17859-8634-44a4-86e8-2541234a1d05}</Project>
+      <Name>ToDo.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\ToDo.Shared\ToDo.Shared.projitems" Label="Shared" Condition="Exists('..\ToDo.Shared\ToDo.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

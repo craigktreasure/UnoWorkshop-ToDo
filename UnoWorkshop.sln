@@ -39,6 +39,7 @@ Global
 		ToDo\ToDo.Shared\ToDo.Shared.projitems*{2cb31828-2cd3-4cfc-88a9-57917477d85d}*SharedItemsImports = 4
 		ToDo\ToDo.Shared\ToDo.Shared.projitems*{320b8ae6-0249-48ac-a796-81d8642baf8f}*SharedItemsImports = 4
 		ToDo\ToDo.Shared\ToDo.Shared.projitems*{6279c845-92f8-4333-ab99-3d213163593c}*SharedItemsImports = 13
+		ToDo\ToDo.Shared\ToDo.Shared.projitems*{804ecb3a-3acc-40e4-b7b7-3d0e545808af}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
