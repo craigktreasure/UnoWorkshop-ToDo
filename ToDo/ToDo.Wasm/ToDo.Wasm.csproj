@@ -45,8 +45,9 @@
     <PackageReference Include="ReactiveUI.Uno" />
     <PackageReference Include="Uno.CodeGen" />
     <PackageReference Include="Uno.UI" />
+    <PackageReference Include="Uno.UI.RemoteControl" Condition="'$(Configuration)'=='Debug'" />
     <PackageReference Include="Uno.Wasm.Bootstrap" />
-    <DotNetCliToolReference Include="Uno.Wasm.Bootstrap.Cli" Version="1.0.10" />
+    <PackageReference Include="Uno.Wasm.Bootstrap.DevServer" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ToDo.Models\ToDo.Models.csproj" />
