@@ -1,5 +1,4 @@
 ﻿<linker>
-  <assembly fullname="ToDo.Wasm" />
   <assembly fullname="ToDo.Models" />
   <assembly fullname="ToDo.ViewModels" />
   <assembly fullname="Uno.UI" />
